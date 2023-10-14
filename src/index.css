@@ -1,0 +1,13 @@
+:root {
+  margin:none;
+}
+
+*{
+  box-sizing:border-box;
+  overflow:hidden;
+}
+
+.u-fill{
+  width:100%;
+  height:100%;
+}

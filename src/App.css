@@ -1,0 +1,31 @@
+#root {
+  /* max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center; */
+  width:100vw;
+  height:100vh;
+  background-image: url("./assets/poster.jpg");
+}
+
+#VisualWindow{
+  z-index:1;
+}
+
+#CarWindow{
+  z-index:2;
+  position:absolute;
+  top:10px;
+  left:10px;
+  width:300px;
+  height:300px;
+}
+
+#content{
+  z-index:2;
+  position:absolute;
+  top:10px;
+  left:10px;
+  width:300px;
+  height:300px;
+}
