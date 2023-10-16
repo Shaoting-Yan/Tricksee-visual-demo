@@ -55,12 +55,9 @@ export function moveObject(){
 }
 
 export function moveCamera(){
-  // let Ax = this.accelerationX;
-  // let Ay = this.accelerationY;
-  // let Az = this.accelerationZ;
-  let Ax = 0;
-  let Ay = (this.mouseY-this.pmouseY)/10;
-  let Az = (this.mouseX-this.pmouseX)/10;
+  let Ax = this.accelerationX;
+  let Ay = this.accelerationY;
+  let Az = this.accelerationZ;
   
   //camera move due to acceleration and brake
   let dz = this.su*Math.sign(Az)*(Math.abs(Az)**1.5);
@@ -68,7 +65,8 @@ export function moveCamera(){
   if (this.accZ != 0){                                        
     this.accZ -= this.accZ/(Math.abs(this.accZ)**0.5); //damping
   }
-  let camZ = this.camHeight + this.accZ;
+  // let camZ = this.camHeight + this.accZ;
+  let camZ = this.camHeight
 
   //camera move due to up and down
   let dy = this.he*Math.sign(Ay)*(Math.abs(Ay)**1.5);
@@ -85,19 +83,21 @@ export function moveCamera(){
   if (this.accX != 0){                                        
     this.accX -= this.accX/10; //damping
   }
-  let camX = this.accX;
-  let obX = this.accX;
+  // let camX = this.accX;
+  // let obX = this.accX;
+  let camX = 0;
+  let obX = 0;
 
   //pitch movement
   this.currRx = typeof this.currRx == 'undefined' ? this.Rx : this.currRx;
   if (this.currRx != this.Rx){
     this.currRx += (this.Rx-this.currRx)/this.da; //Ease back
   }
-  obY += -camZ*Math.tan(this.Rx-this.currRx);
+  // obY += -camZ*Math.tan(this.Rx-this.currRx);
   if (this.currRx != this.Rx){
     this.currRx += (this.Rx-this.currRx)/this.da; //Ease back
   }
-  camY -= -camZ*Math.tan(this.Rx-this.currRx);
+  // camY -= -camZ*Math.tan(this.Rx-this.currRx);
 
   this.camera(camX, camY, camZ, obX, obY, 0,0,1,0);
   // perspective(PI / 3.0, width / height, camZ-140, camZ);
@@ -197,36 +197,4 @@ export function random1D(size,count,space){
     all[curr] = true;
   }
   return all;
-}
-
-export function HeaveSurgeSway(){
-  let Ax = 0;
-  let Ay = (this.mouseY-this.pmouseY)/10;
-  let Az = (this.mouseX-this.pmouseX)/10;
-  //camera move due to acceleration and brake
-  let dz = this.su*Math.sign(Az)*(Math.abs(Az)**1.5);
-  this.accZ = typeof this.accZ == 'undefined' ? this.camHeight : this.constrain(this.accZ+dz,-this.camHeight/2,this.camHeight*5);
-  if (this.accZ != 0){                                        
-    this.accZ -= this.accZ/(Math.abs(this.accZ)**0.5); //damping
-  }
-  let camZ = this.camHeight + this.accZ;
-
-  //camera move due to up and down
-  let dy = this.he*Math.sign(Ay)*(Math.abs(Ay)**1.5);
-  this.accY = this.accY == null ? 0 : this.accY+dy;
-  if (this.accY != 0){                                        
-    this.accY -= this.accY/20; //damping
-  }
-  let camY = this.accY;
-  let obY = this.accY;
-
-  //camera move due to left and right
-  let dx = this.sw*Math.sign(Ax)*(Math.abs(Ax)**1.5);
-  this.accX = typeof this.accX == 'undefined' ? 0 : this.accX+dx;
-  if (this.accX != 0){                                        
-    this.accX -= this.accX/10; //damping
-  }
-  let camX = this.accX;
-  let obX = this.accX;
-  return [this.accX,this.accY,this.accZ];
 }

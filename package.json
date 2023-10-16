@@ -3,7 +3,7 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
-  "homepage": "Shaoting-Yan.github.io/Tricksee-visual-demo/",
+  "homepage": "Shaoting-Yan.github.io/Tricksee-overlay/",
   "scripts": {
     "dev": "vite",
     "build": "vite build",

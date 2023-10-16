@@ -5,7 +5,8 @@
   text-align: center; */
   width:100vw;
   height:100vh;
-  background-image: url("./assets/poster.jpg");
+  /* background-image: url("./assets/poster.jpg"); */
+  background:transparent;
 }
 
 #VisualWindow{
